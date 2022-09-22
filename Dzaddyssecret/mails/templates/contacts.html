@@ -1,0 +1,90 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+	<main>
+
+		<div class="hero_single inner_pages background-image" data-background="url({% static 'img/contact.jpg'%})">
+			<div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-xl-9 col-lg-10 col-md-8">
+							<h1>Contact Us</h1>
+							<p>Per consequat adolescens ex cu nibh commune</p>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+			</div>
+			<div class="frame white"></div>
+		</div>
+		<!-- /hero_single -->
+
+		<div class="bg_gray">
+		    <div class="container margin_60_40">
+		        <div class="row justify-content-center">
+		            <div class="col-lg-4">
+		                <div class="box_contacts">
+		                    <i class="icon_tag_alt"></i>
+		                    <h2>Reservations</h2>
+		                    <a href="#0">+254 740-172-662</a> - <a href="#0">reserve@dzaddyssecret.com</a>
+		                    <small>- <a href="{% url 'reservations'%}">Or use the online form</a> -</small>
+		                </div>
+		            </div>
+		            <div class="col-lg-4">
+		                <div class="box_contacts">
+		                    <i class="icon_pin_alt"></i>
+		                    <h2>Address</h2>
+		                    <div>Usiu road, Nairobi - KE</div>
+		                    <small>- <a href="https://www.google.com/maps/dir//SCRATCH+KITCHEN+(USIU);+scratch+fusion+USIU+Rd+Nairobi/@-1.2205584,36.8787333,18z/data=!4m5!4m4!1m0!1m2!1m1!1s0x182f15f3c5aa2a2b:0xebcf76ded292a323">Get Directions</a> -</small>
+		                </div>
+		            </div>
+		            <div class="col-lg-4">
+		                <div class="box_contacts">
+		                    <i class="icon_clock_alt"></i>
+		                    <h2>Opening Hours</h2>
+		                    <div>MON to FRI 9am-6pm | SAT 9am-2pm</div>
+		                    <small>- Sunday Closed -</small>
+		                </div>
+		            </div>
+		        </div>
+		        <!-- /row -->
+		    </div>
+		    <!-- /container -->
+		</div>
+		<!-- /bg_gray -->
+
+		<div class="container margin_60_40">
+		    <h5 class="mb_5">Drop Us a Line</h5>
+		    <div class="row">
+		        <div class="col-lg-4 col-md-6 add_bottom_25">
+		            <div id="message-contact"></div>
+		            <form method="post" action="" id="contactform" autocomplete="off">
+						{%csrf_token%}
+		                <div class="form-group">
+		                    <input class="form-control" type="text" placeholder="Name" id="name_contact" name="name_contact" required>
+		                </div>
+		                <div class="form-group">
+		                    <input class="form-control" type="email" placeholder="Email" id="email_contact" name="email_contact" required>
+		                </div>
+		                <div class="form-group">
+		                    <textarea class="form-control" style="height: 150px;" placeholder="Message" id="message_contact" name="message_contact" required></textarea>
+		                </div>
+		                <div class="form-group">
+		                    <input class="form-control" type="text" id="verify_contact" name="verify_contact" placeholder="Are you human? 3 + 1 =">
+		                </div>
+		                <div class="form-group">
+		                    <input class="btn_1 full-width" type="submit" value="Submit" id="submit-contact">
+		                </div>
+		            </form>
+		        </div>
+		        <div class="col-lg-8 col-md-6 add_bottom_25">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.2282616914932!2d36.87826645768211!3d-1.2205601999999967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f15f3c5aa2a2b%3A0xebcf76ded292a323!2sSCRATCH%20KITCHEN%20(USIU)%3B%20scratch%20fusion!5e0!3m2!1sen!2ske!4v1655975441257!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>		        </div>
+		    </div>
+		    <!-- /row -->
+		</div>
+		<!-- /container -->
+		
+	</main>
+	<!-- /main -->
+	{%endblock%}

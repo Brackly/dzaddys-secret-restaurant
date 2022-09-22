@@ -1,0 +1,103 @@
+{%extends 'dashboard.html' %}
+{% load static %}
+{% block content%}
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Reservation</h1>
+                    </div>
+
+                    <div class="row" width="100%">
+                        <div class="card text-center">
+                            <div class="card-header">
+                              By:
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">{{reservation.name}}</h5>
+                        
+                              <div class="card" style="width: 18rem; float:left; margin-right: 2em; margin-bottom: 2em;">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><h6 class="p-3 mb-2 bg-success text-white">Reservation Information</h6></li>
+                                  <li class="list-group-item"><strong>Date: </strong>{{reservation.reservation_date}}</li>
+                                  <li class="list-group-item"><strong>Time: </strong>{{reservation.reservation_time}}</li>
+                                  <li class="list-group-item"><strong>Number of People: </strong>{{reservation.people}}</li>
+                                </ul>
+                              </div>   
+                              <div class="card" style="width: 18rem; float:left; margin-right: 2em; margin-bottom: 2em;">
+                                <div class="card-body">
+                                  <h5 class="card-title">Additional Information</h5>
+                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                  
+                                </div>
+                              </div>
+                              <div class="card" style="width: 18rem; margin-right: 2em; margin-bottom: 2em;">
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item"><h6 class="p-3 mb-2 bg-success text-white">Contact Information</h6></li>
+                                  <li class="list-group-item"><strong>Email: </strong>{{reservation.email}}</li>
+                                  <li class="list-group-item"><strong>Phone: </strong>{{reservation.phone}}</li>
+                                  <li class="list-group-item"><strong>cleared: </strong>{{reservation.phone}}</li>
+                                </ul>
+                              </div>  
+                              
+                              {%if reservation.cleared == True %}
+                                <p class="btn btn-primary">Reservation Cleared</p>
+                              {%else%}
+                                <a href="{%url 'clearReservation' id=reservation.id %}" class="btn btn-primary" >Mark as cleared</a>
+                              {%endif%}
+                              </div>
+                            <div class="card-footer text-muted">
+                              2 days ago
+                            </div>
+                          </div>
+                        
+                            
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            {%endblock%}
+
+
+
+
+
+            <!-- Dropdown Card Example -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Reservation by {{reservation.name}}</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                            aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Actions:</div>
+                            <a class="dropdown-item" href="#">Clear reservation</a>
+                            <a class="dropdown-item" href="#">Edit Resevation</a>                       
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                   <p> Reserved Time: {{reservation.name}}</p>
+                   <p> Number of People: {{reservation.people}}</p>
+                   <p> Contacts: </p>
+                   <p>   Email: {{reservation.email}}</p>
+                   <p>   Phone:{{reservation.phone}}</p>
+                   <p> Additional Information :{{reservation.additional_info}}</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>

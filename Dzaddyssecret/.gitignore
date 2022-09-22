@@ -1,0 +1,5 @@
+dzaddy_venv/
+core/.env
+__pycache__/
+.vscode
+db.sqlite3 

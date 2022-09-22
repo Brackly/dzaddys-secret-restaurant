@@ -1,0 +1,229 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Foores - Single Restaurant Version">
+    <meta name="author" content="Ansonika">
+    <title>Dzaddy's Secret Restaurant </title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+
+
+    <!-- GOOGLE WEB FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BASE CSS -->
+	<link rel="stylesheet" href="{% static 'css/vendors.min.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <!-- SPECIFIC CSS -->
+	<link rel="stylesheet" href="{% static 'css/wizard.css' %}" type="text/css" />
+
+    <!-- YOUR CUSTOM CSS -->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+
+</head>
+
+<body>
+
+	<div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div><!-- /Page Preload -->
+				
+	<header class="header clearfix element_to_stick">
+		<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
+		<div class="container-fluid">
+		<div id="logo">
+			<a href="{%url 'home'%}">
+				<img src="{% static 'img/logo.svg' %}" width="140" height="35" alt="" class="logo_normal">
+				<img src="{% static 'img/logo_sticky.svg' %}" width="140" height="35" alt="" class="logo_sticky">
+			</a>
+		</div>
+		<ul id="top_menu">
+			
+		</ul>
+		
+		<!-- /top_menu -->
+		<a href="#0" class="open_close">
+			<i class="icon_menu"></i><span>Menu</span>
+		</a>
+		<nav class="main-menu">
+		    <div id="header_menu">
+		        <a href="#0" class="open_close">
+		            <i class="icon_close"></i><span>Menu</span>
+		        </a>
+		        <a href="index.html"><img src="{% static 'img/logo.svg'%}" width="140" height="35" alt=""></a>
+		    </div>
+		    <ul>
+		        <li class="submenu">
+		            <a href="{% url 'home'%}" class="show-submenu">Home</a>
+		        </li>
+		        <li class="submenu">
+		            <a href="{% url 'menu'%}" class="show-submenu">Menu</a>
+		            <ul>
+		                <li><a href="{% url 'menu_of_the_day'%}">Menu of the Day <span class="badge badge-danger">HOT</span></a></li>
+		                <li><a href="{% url 'menu'%}">Main Menu</a></li>
+		            </ul>
+		        </li>
+		        <li class="submenu">
+		            <a href="{% url 'home'%}#about_us" class="show-submenu">About Us</a>
+		            
+		        </li>
+		         <li class="submenu">
+		            <a href="{% url 'contact_us'%}" class="show-submenu">Contact Us</a>
+		        </li>
+				<li class="submenu">
+		            <a href="{% url 'leave_review'%}" class="show-submenu">Review Us</a>
+		            
+		        </li>
+		        <li><a href="{% url 'reservations'%}" class="btn_top">Reservations</a></li>
+				<li class="submenu">
+		            <a href="#" class="show-submenu">
+						<img src="{% static 'img/user.png' %}" width="35" height="35">
+					</a>
+		            <ul>
+						{%if user.is_authenticated%}
+						<li><h6 style="text-align: center; margin-top: 1.2em;" >{{user.username}}</h6></li>
+						{% if request.user.is_staff %}
+		                <li><a href="{% url 'admin-dashboard'%}" class="show-submenu">Dashboard <span class="badge badge-danger">HOT</span></a></li>
+						{% endif %}
+
+		                <li><a href="{% url 'account_logout'%}">Logout</a></li>
+						{%else%}
+						<li><a href="{% provider_login_url "google" next="/" %}" class="show-submenu">Sign in <span class="badge badge-danger">HOT</span></a></li>
+		                <li><a href="{% provider_login_url "google" next="/" %}" class="show-submenu">Sign Up</a></li>
+						{%endif%}
+		            </ul>
+		        </li>
+		    </ul>
+		</nav>
+	</div>
+	<!-- Search -->
+	<div class="search-overlay-menu">
+	    <span class="search-overlay-close"><span class="closebt"><i class="icon_close"></i></span></span>
+	    <form role="search" id="searchform" method="get">
+	        <input value="" name="q" type="search" placeholder="Search..." />
+	        <button type="submit"><i class="icon_search"></i></button>
+	    </form>
+	</div><!-- End Search -->
+	</header>
+	<!-- /header -->
+	
+    {% block content%}
+
+    {%endblock%}
+
+
+	<footer>
+	    <div class="frame black" id="contact_us"></div>
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+	                <div class="footer_wp">
+	                    <i class="icon_pin_alt"></i>
+	                    <h3>Address</h3>
+	                    <p>Usiu road<br>Nairobi - KE</p>
+						<small> <a href="https://www.google.com/maps/dir//SCRATCH+KITCHEN+(USIU);+scratch+fusion+USIU+Rd+Nairobi/@-1.2205584,36.8787333,18z/data=!4m5!4m4!1m0!1m2!1m1!1s0x182f15f3c5aa2a2b:0xebcf76ded292a323">Get Directions</a> </small>
+	                </div>
+	            </div>
+	            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+	                <div class="footer_wp">
+	                    <i class="icon_tag_alt"></i>
+	                    <h3>Reservations</h3>
+	                    <p><a href="tel:009442323221">+254 740-172-662</a><br><a href="#0">reservations@dzaddyssecret.com</a></p>
+	                </div>
+	            </div>
+	            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+	                <div class="footer_wp">
+	                    <i class="icon_clock_alt"></i>
+	                    <h3>Opening Hours</h3>
+	                    <ul>
+	                        <li>Mon - Sat: 10am - 11pm</li>
+	                        <li>Sunday: Closed</li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+	                <h3>Keep in touch</h3>
+	                <div id="newsletter">
+	                    <div id="message-newsletter"></div>
+	                    <form method="post" action="{% url 'newsletter'%}" id="newsletter_form">
+							{%csrf_token%}
+	                        <div class="form-group">
+	                            <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email" required> 
+	                            <button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+	        <!-- /row-->
+	        <hr>
+	        <div class="row">
+	            <div class="col-sm-5">
+	                <p class="copy">© Dzaddy's Secret Restaurant - All rights reserved</p>
+	            </div>
+	            <div class="col-sm-7">
+	                <div class="follow_us">
+	                    <ul>
+	                        <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'img/twitter_icon.svg'%}" alt="" class="lazy"></a></li>
+	                        <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'img/facebook_icon.svg'%}" alt="" class="lazy"></a></li>
+	                        <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'img/instagram_icon.svg'%}" alt="" class="lazy"></a></li>
+	                        <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'img/youtube_icon.svg'%}" alt="" class="lazy"></a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	        <p class="text-center"></p>
+	    </div>
+	</footer>
+	<!--/footer-->
+
+	<div id="toTop"></div><!-- Back to top button -->
+
+	<!-- Modal terms -->
+	<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="termsLabel">Terms and conditions</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in <strong>nec quod novum accumsan</strong>, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus. Lorem ipsum dolor sit amet, <strong>in porro albucius qui</strong>, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<!-- COMMON SCRIPTS -->
+	<script src="{% static 'js/common_scripts.min.js' %}"></script> 
+	<script src="{% static 'js/slider.js' %}"></script> 
+	<script src="{% static 'js/common_func.js' %}"></script> 
+	<script src="{% static 'phpmailer/validate.js' %}"></script>
+
+
+    <!-- SPECIFIC SCRIPTS (wizard form) -->
+	<script src="{% static 'js/wizard/wizard_scripts.min.js' %}"></script>
+	<script src="{% static 'js/wizard/wizard_func.js' %}"></script>
+
+</body>
+</html>

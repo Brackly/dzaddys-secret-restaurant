@@ -1,0 +1,82 @@
+{%extends 'dashboard.html' %}
+{% load static %}
+{% block content%}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">RESERVATIONS</h1>
+                    <p class="mb-4">
+                        
+                    </p>
+                   
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="p-3 mb-2 bg-info text-white">{{title}}</span>
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'show-reservations' param=1 %}" onclick="my">Today's Reservations</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'show-reservations' param=2 %}">Future Reservations</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'show-reservations' param=3 %}">Previous Reservations</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'show-reservations' param=4 %}">All Reservations</a></li>
+                                  </ul>
+                              </ul>
+                              <br>
+                              
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="p-3 mb-2 bg-success text-white">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Number of People</th>
+                                            <th>Phone</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Number of People</th>
+                                            <th>Phone</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {%for reservation in reservations%}
+                                        
+                                        <tr>
+                                            <td> <a href="{%url 'reservation' id=reservation.id%}">Reservation by {{reservation.name}}</a> </td>
+                                            <td>{{reservation.reservation_date}}</td>
+                                            <td>{{reservation.reservation_time}}</td>
+                                            <td>{{reservation.people}}</td>
+                                            <td>{{reservation.phone}}</td>
+                                            
+                                        </tr>
+                                    
+                                        {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Page level plugins -->
+
+
+{%endblock%}
